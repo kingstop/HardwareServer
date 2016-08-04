@@ -1,0 +1,103 @@
+package message;
+import "common.proto";
+message S2CMsgHeroInit
+{
+	required MsgHeroData hero = 1;
+}
+
+
+
+message S2CMsgHeroEquip
+{
+	repeated MsgEquipData equips = 1;
+	required bool end = 2;
+	required bool begin = 3;
+	
+}
+
+message S2CMsgToyInit
+{
+	repeated MsgToyBaseData toys = 1;
+}
+
+message S2CMsgEquipInit
+{
+	required S2CMsgHeroEquip equip = 1;
+}
+
+message C2SModifySuitNameReq
+{
+	required int32 suit_id = 1;
+	required string suit_name = 2;
+}
+
+message S2CModifySuitNameACK
+{
+	required int32 suit_id = 1;
+	required string suit_name = 2;
+}
+
+message S2CModifySuitErrorACK
+{
+	required int32 suit_id = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}
+
+message C2SModifySuitReq
+{
+	required MsgSuitData data = 1;
+}
+
+message S2CModifySuitACK
+{
+	required int32 suit_id = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}
+
+message C2SDelSuitReq
+{
+	required int32 suit_id = 1;
+}
+
+message S2CDelSuitACK
+{
+	required int32 suit_id = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}
+
+message C2SVerifyToyCDKeyReq
+{
+	required string cd_key = 1;
+}
+
+message S2CVerifyToyCDKeyErrorACK
+{
+	required string cd_key = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}
+
+message S2CVerifyToyCDKeyACK
+{
+	required MsgToyData ToyData = 1;
+}
+
+message S2CEquipLevelUpReq
+{
+	required uint64 equip_id = 1;
+}
+
+
+message S2CEquipLevelUpACK
+{
+	required uint64 equip_id = 1;
+	required int32 level = 2;
+	required int32 gold = 3;
+	required int32 count = 4;
+	required int32 diamand = 5;
+}
+
+message S2CEquipLevelUpErrorACK
+{
+	required uint64 equip_id = 1;
+	required HeroErrorCode error = 2 [default = no_error];
+}

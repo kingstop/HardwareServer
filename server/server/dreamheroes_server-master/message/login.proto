@@ -1,0 +1,53 @@
+package message;
+import "common.proto";
+message LoginRequest
+{
+	optional string name = 1;
+	optional string pwd = 2;
+}
+
+
+message RegisterAccountRequest
+{
+	required string name = 1;
+	required string pwd = 2;
+}
+
+message RegisterAccountFaildACK
+{
+}
+
+//登录结果枚举
+enum enumLoginResult
+{
+	enumLoginResult_Success = 0;
+	enumLoginResult_Fail = 1;
+	enumLoginResult_NameFail = 2;
+	enumLoginResult_PwdFail = 3;
+	enumLoginResult_HaveLogin = 4;	//已经登录
+};
+
+
+message LoginResponse
+{
+	optional string gate_ip = 1;
+	optional uint32 gate_port = 2;
+	optional uint32 user_account = 3;		//账号ID
+	optional enumLoginResult result = 4;	//登录结果
+	optional uint32 chartype = 5;
+};
+
+//登录Gate
+message LoginGame
+{
+	required uint32 user_account = 1;		//账号ID
+};
+
+//离开服务器
+message ClientExit
+{
+	optional uint32 charid = 1;
+	optional uint64 user_account = 2;
+};
+
+

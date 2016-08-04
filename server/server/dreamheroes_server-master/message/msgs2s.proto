@@ -1,0 +1,17 @@
+package message;
+message ServerVersion
+{
+	required uint32 Major 	= 1;		// major version number.
+	required uint32 Minor 	= 2;		// minor version number.	
+	required uint32 Build 	= 3;		// build version number.	
+	required uint32 AppSvn = 4;		// svn version number.	
+}
+message MsgServerRegister
+{
+	required uint32			ServerId 	= 1;			//  server's id
+	required ServerVersion 	Version 	= 2;			//  server's version
+}
+message MsgDB2GTChangeGS
+{
+	required uint32 GameServerID = 1;
+}

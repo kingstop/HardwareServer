@@ -1,0 +1,33 @@
+package message;
+import "msgs2s.proto";
+message GTLGData
+{
+	required uint64	account = 1;
+	required uint32	transid = 2;
+}
+message MsgLN2GTUserLogin
+{
+	required GTLGData data = 1;
+}
+// login notice gate kick
+message MsgLN2GTKickUser
+{
+	required GTLGData data = 1;
+}
+// gate notice login online count
+message MsgGT2LNOnlines
+{
+	required uint32	onlines = 1;
+}
+// gate notice login user login prepair
+message MsgGT2LNPrepar
+{
+	required uint64	account = 1;
+}
+message MsgGTRegisterLG
+{
+	required MsgServerRegister  	GateInfo	= 1;	//	gate's id
+	required string 				ip			= 2;
+	required uint32					port		= 3;
+	repeated GTLGData 				Accounts	= 4;	//  gate's online info
+}

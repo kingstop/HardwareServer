@@ -1,0 +1,38 @@
+PROJECT(project_mole)  
+#工程名  
+  
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)  
+#最低版本号  
+  
+INCLUDE(FindBoost)
+
+INCLUDE_DIRECTORIES(  
+    ${PROJECT_SOURCE_DIR}/include  
+    ${PROJECT_SOURCE_DIR}/include/linklist
+    ./../../common/     
+   ./../../../../../external_libs/include/boost-1_58/ 
+   ./../../../../../external_libs/google/protobuf/src/
+   ./../../../../../external_libs/
+   /usr/include/mysql/
+   /usr/local/include/mysql++/   
+   /usr/include/ 
+   /usr/local/include/ 
+)  
+#头文件目录  
+  
+LINK_DIRECTORIES(  
+    ${PROJECT_SOURCE_DIR}/lib  
+    /usr/local/lib  
+    /usr/lib  
+)  
+#链接库目录  
+  
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)  
+#生成的可执行文件所在目录，PROJECT_BINARY_DIR即为外部编译目录，这里即为Build目录  
+  
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)  
+#生成的库文件所在目录  
+#SET(GATE_SOURCE_LIST game_client.cpp game_manager.cpp login_client.cpp main.cpp server.cpp user_manager.cpp user_session.cpp user_tcp_server.cpp)
+#SET(GATE_SOURCE_LIST *.cpp)
+FILE(GLOB SOURCE_1 "./*.cpp") 
+ADD_EXECUTABLE(gate  ${SOURCE_1})

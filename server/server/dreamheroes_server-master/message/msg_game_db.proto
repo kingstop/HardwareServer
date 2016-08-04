@@ -1,0 +1,59 @@
+package message;
+import "common.proto";
+import "dream_hero.proto";
+message MsgReqHeroDataGS2DB
+{
+	required uint64 account = 1;
+}
+
+message MsgHeroDataDB2GS
+{
+	required uint64 account = 1;
+	required MsgHeroData Data = 2; 
+	repeated MsgEquipData equips = 3;
+	repeated MsgToyData toys = 4;
+}
+
+message MsgNeedCreateHeroDB2GS
+{
+
+}
+
+message MsgSaveHeroDataGS2DB
+{
+	required uint64 account = 1;
+	required MsgHeroData Data = 2; 
+}
+
+message MsgSaveDataGS2DB
+{
+	required bytes sql = 1;
+}
+
+message MsgSaveAllHeroesGS2DB
+{
+
+}
+
+message MsgSaveAllHeroesDB2GS
+{
+
+}
+
+message MsgVerifyToyGS2DB
+{
+	required string cdkey = 1;
+	required uint64 account = 2;
+}
+
+message MsgVerifyToyErrorDB2GS
+{
+	required HeroErrorCode error = 1 [default = no_error];
+	required string cdkey = 2;
+}
+
+message MsgVerifyToyDB2GS
+{
+	required MsgToyData toy = 1;
+	required uint64 account = 2;
+}

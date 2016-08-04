@@ -1,0 +1,62 @@
+package message;
+enum HeroErrorCode
+{
+	no_error = 0;	
+	server_error_no_suit_id = 1;
+	toy_cd_key_already_verify = 2;
+	toy_cd_key_have_been_in_used = 3;
+	equip_level_up_not_enough_gold = 4;
+	equip_level_up_not_enough_diamand = 5;
+	equip_level_up_not_found_equip = 6;
+	equip_level_up_not_found_config = 7;
+	equip_level_up_not_enough_equip = 8;
+}
+
+
+message MsgSuitData
+{
+	required int32 suit_id = 1;
+	required string suit_name = 2;
+	repeated uint64 equip_ids = 3;
+}
+
+message MsgHeroData
+{
+	required uint64 account = 1;
+	required uint32 level = 2;
+	required string name = 3;	
+	required int32 action_point = 4;
+	required int32 diamand = 5;
+	required int32 gold = 6;
+	repeated MsgSuitData suits = 7;
+}
+
+message MsgEquipData
+{
+	required uint64 id = 1;
+	required int32 equip_id = 2;
+	required int32 level = 3;
+	required bool equipped = 4;
+	required int32 client_save_flag = 5;	
+	required int32 count = 6;
+}
+
+message MsgIntPair
+{
+	required int32 number_1 = 1;
+	required int32 number_2 = 2;
+}
+
+message MsgToyBaseData
+{	
+	required int32 toy_config_id = 1;
+	required int32 toy_config_type = 2;
+	required int32 toy_level = 3;
+}
+
+message MsgToyData
+{
+	required string toy_cd_key = 1;
+	required uint64 time_stamp = 2;	
+	required MsgToyBaseData toy = 3;
+}

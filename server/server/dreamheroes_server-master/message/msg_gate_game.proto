@@ -1,0 +1,18 @@
+package message;
+import "msg_gate_login.proto";
+message MsgGT2GSAddUser
+{
+	required GTLGData data = 1;
+}
+message MsgGT2GSRemoveUser
+{
+	required uint32	trans = 1;
+}
+message MsgGT2GSOfflineUser
+{
+	required uint32	trans = 1;
+}
+message MsgGS2GTOnlines
+{
+	required uint32	onlines = 1;
+}
